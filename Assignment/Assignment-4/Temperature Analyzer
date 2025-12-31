@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+int inputdata(int (&temp)[7][4])
+{
+   
+    for(int i=0; i<7;i++)
+    {
+        cout<<" DAY "<<i+1<<endl;
+        for(int j=0;j<4;j++)
+        {
+            cout<<"Enter Temp"<<j+1<<" : ";
+            cin>>temp[i][j];
+            cout<<endl;
+        }
+        cout<<endl<<endl;
+    }
+    return temp[7][4];
+}
+
+void print(int temp[7][4])
+{   cout<<"Day  |  T1  |  T2  |  T3  |  T4  "<<endl;
+    for(int i=0;i<7;i++)
+    {   cout<<i+1;
+        for(int j=0;j<4;j++)
+        {
+            cout<<"   |   "<<temp[i][j];
+        }
+        cout<<endl;
+    }
+}
+void minmaxavgtemp(int x[7][4])
+{
+int  max=x[0][0],min=x[0][0],total=0;
+for(int i=0;i<7;i++)
+{   
+    for(int j=0;j<4;j++)
+    {
+       
+        if(max>=x[i][j])
+        {
+            max=x[i][j];
+        }
+        
+       
+        if(min<=x[i][j])
+        {
+            min=x[i][j];
+        }
+        total=total+x[i][j];
+
+
+    }
+}
+int avg= total/(7*4);
+cout<<"Max Temp:"<<max<<"   Min Temp:"<<min<<"  Average Temp:"<<avg;
+}
+
+
+
+int main()
+{
+int tempd[7][4];    
+inputdata(tempd);
+print(tempd);
+minmaxavgtemp(tempd);
+
+}
