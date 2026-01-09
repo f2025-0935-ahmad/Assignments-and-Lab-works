@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <unordered_set>
+#include <unordered_map>
+using namespace std;
+
+void removeEvenNumbers(vector<int>& vec) {
+    vec.erase(remove_if(vec.begin(), vec.end(), [](int n) {
+        return n % 2 == 0;
+    }), vec.end());
+}
+
+int findMissingElement(const vector<int>& first, const vector<int>& second) {
+    int result = 0;
+    for (int num : first) result ^= num;
+    for (int num : second) result ^= num;
+    return result;
+}
+
+bool hasDuplicates(const vector<int>& vec) {
+    unordered_set<int> seen;
+    for (int num : vec) {
+        if (seen.find(num) != seen.end()) return true;
+        seen.insert(num);
+    }
+    return false;
+}
+
+int countSumPairs(const vector<int>& vec, int target) {
+    unordered_map<int, int> freq;
+    int count = 0;
+    for (int num : vec) {
+        int complement = target - num;
+        if (freq.count(complement)) {
+            count += freq[complement];
+        }
+        freq[num]++;
+    }
+    return count;
+}
+
+int main() {
+    vector<int> v1 = {1, 2, 3, 4, 5, 6};
+    removeEvenNumbers(v1);
+    cout << "1. Vector after removing evens: ";
+    for (int n : v1) std::cout << n << " ";
+    cout << endl;
+
+    vector<int> first = {1, 2, 3, 4, 5};
+    vector<int> second = {1, 2, 4, 5};
+    cout << "2. Missing element: " << findMissingElement(first, second) ;
+
+    vector<int> v3 = {1, 2, 3, 4, 2};
+    cout << "3. Has duplicates: " << (hasDuplicates(v3) ? "Yes" : "No") ;
+
+    vector<int> v4 = {1, 5, 7, -1, 5};
+    int target = 6;
+    cout << "4. Number of pairs with sum " << target << ": " << countSumPairs(v4, target) ;
+
+    return 0;
+}
