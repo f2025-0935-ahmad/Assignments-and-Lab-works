@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+int main()
+{ 
+    string password;
+    bool incorrectpassword = true;
+    
+    do{
+        cout << "Enter password : ";
+        cin >> password; 
+        if (password=="Python123"){
+            cout<<"account unlocked"<<endl;
+            break;
+        }
+        cout<<endl<<"password incorrect"<<endl<<endl;
+            
+    }while (true);
+    return 0;
+}
+
+Q2
+#include <iostream>
+using namespace std;
+int main()
+{
+    int number;
+    cout<< "Enter a number :";
+    cin>> number;
+    for(int i=2; i<=number/2; i++)
+    {
+        if (number/i==0)
+        cout<< "Number is not a prime number"<< endl;
+        else
+        cout<< "Number is a prime number"<< endl;
+    }
+
+
+    return 0;
+}
+
+Q3
+
+#include <iostream>
+using namespace std;
+int main() 
+{   
+    char F;
+    int rows,seats;
+   cout << "Enter the number of rows: ";
+   cin >> rows;
+   cout << "Enter the number of seats: ";
+   cin >> seats;
+
+   for(int i=1; i<=rows; i++)
+    for (int j=1; j<=seats; j++)
+ 
+    cout << "Here's the schedule: ";
+    cout << i << endl;
+     
+    return 0;
+   
+
+
+}
